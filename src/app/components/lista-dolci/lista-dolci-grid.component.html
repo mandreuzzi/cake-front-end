@@ -1,0 +1,28 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Loop over the collection of Dolci -->
+                <div class="card" *ngFor="let dolce of dolci" class="col-md-3" style="width:18rem;">
+                  <div *ngIf="isAuthenticated" class="card-header text-center">
+                    <a routerLink="/members/dolci/pre/update/{{dolce.id}}" class="btn btn-warning"><i class="fas fa-edit px-2"></i></a>
+                    <a routerLink="/members/dolci/pre/delete/{{dolce.id}}" class="btn btn-danger"><i class="fa fa-trash px-2"></i></a>
+                  </div>
+                    <a routerLink="/dolci/{{dolce.id}}">
+                        <img [src]="dolce.imgToShow" class="card-img-top rounded img-thumbnail" alt="{{ dolce.nome }}" style="height:200px">
+                    </a>
+                    <div class="card-body">
+                      <h6 class="card-title">
+                        <a routerLink="/dolci/{{dolce.id}}">{{ dolce.nome }}</a><span class="badge rounded-pill alert-danger">{{dolce.prezzo | checkday: dolce.dataCreazione | currency:'EUR'}}</span>
+                      </h6>
+                    </div>
+                    <hr/>
+                  </div>
+                
+                <div *ngIf="dolci?.length == 0" class="alert alert-danger" role="alert"> 
+                    <h3>Nessun dolce trovato!</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

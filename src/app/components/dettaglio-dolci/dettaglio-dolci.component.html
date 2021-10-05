@@ -1,0 +1,28 @@
+<div class="detail-section">
+    <div class="container-fluid">
+        <div class="row>">
+            <div class="card card-center col-md-5">
+                <div class="card-header text-center">
+                  <h3> {{dolce.nome}} <span class="badge rounded-pill alert-danger">{{dolce.prezzo | checkday:dolce.dataCreazione | currency:'EUR'}}</span></h3>
+                </div>
+                <img src="{{dolce.imgToShow}}" class="card-img-top rounded img-thumbnail" alt="{{ dolce.nome }}">
+                <div class="card-body text-center">
+                  <p class="card-text">{{dolce.descrizione}}</p>
+                  <hr>
+                  <h4>Ingredienti</h4>
+                  <p>(<i class="fa fa-fire"> Kcal {{dolce.calorie}}</i>)</p>
+                  <dl>
+                    <dt *ngFor="let ingrediente of dolce.ingredienti"><i class="fa fa-check"></i> {{ingrediente.nome}} </dt>
+                </dl>
+                  <div *ngIf="dolce.ingredienti?.length == 0" class="alert alert-warning" role="alert">
+                    <h3>Nessun ingrediente trovato!</h3>
+                </div>
+                </div>
+                <div *ngIf="isAuthenticated" class="card-footer text-center text-muted">
+                  <a routerLink="/members/dolci/delete/{{dolce.id}}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"> Rimuovi</i></a>
+                </div>
+              </div>
+        </div>
+    </div>   
+</div>
+

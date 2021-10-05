@@ -1,0 +1,11 @@
+<div class="login-status-header">
+
+    <div *ngIf="isAuthenticated && userName" class="login-status-user-info">
+       {{ userName.name }}
+    </div>
+
+    <button *ngIf="!isAuthenticated" routerLink="/login" class="btn btn-secondary">Login</button>
+
+    <button *ngIf="isAuthenticated" (click)="logout()" class="btn btn-dark">Logout</button>
+
+</div>
